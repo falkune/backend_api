@@ -1,7 +1,7 @@
 <?php
 require_once "includes/dbConnexion.php";
 class TaskModel{
-    public function saveTask($taskName, $description, $endDate, $userId){
+    public static function saveTask($taskName, $description, $endDate, $userId){
         $dbConnect = DbConnexion::dbLog();
         $request = $dbConnect->prepare("INSERT INTO tasks (task_name, description, end_date, user_id) VALUES (:nom, :description, :end_date, :user)");
         $request->bindParam(':nom', $taskName);
