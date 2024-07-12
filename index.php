@@ -2,6 +2,7 @@
 header("Content-Type: application/json");
 
 require_once "controllers/UserController.php";
+require_once "controllers/TaskController.php";
 
 $url = isset($_GET['url']) ? $_GET['url'] : "home";
 
@@ -29,7 +30,7 @@ switch($url){
             $description = $_POST['description'];
             $endDate     = $_POST['date'];
             $userId      = $_POST['id'];
-
+            TaskController::addTask($taskName, $description, $endDate, $userId);
         }
         break;
     default:
