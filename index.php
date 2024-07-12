@@ -16,6 +16,13 @@ switch($url){
             $user->register();
         }
         break;
+    case "login":
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $email    = $_POST['email'];
+            $password = $_POST['password'];
+            
+        }
+        break;
     default:
         echo json_encode(["message" => "ca marche pas"]);
 }
