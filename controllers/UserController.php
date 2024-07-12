@@ -1,4 +1,5 @@
 <?php
+require_once "models/UserModel.php";
 class UserController{
     // attributs 
     private $nom;
@@ -16,6 +17,16 @@ class UserController{
 
     // fonction pour s'inscrire
     public function register(){
-        
+        if(UserModel::inscription($this->prenom, $this->nom, $this->email, $this->password)){
+            echo json_encode([
+                "status"  => 201,
+                "message" => "utilisateur crée!",
+            ]);
+        }else{
+            echo json_encode([
+                "status"  => 500,
+                "message" => "erreur serveur!",
+            ]);
+        }
     }
 }
