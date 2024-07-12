@@ -41,6 +41,12 @@ class UserController{
         }else{ // l'eamil existe
             if(password_verify($password, $user['password'])){ // verifier le mot de passe
                 uset($user['password']);
+                // retourner les info
+                echo json_encode([
+                    "status"  => 200,
+                    "message" => "conncté...",
+                    "data"    => $user
+                ]);
             }else{
                 echo json_encode([
                     "status"  => 404,

@@ -20,7 +20,7 @@ switch($url){
         if($_SERVER['REQUEST_METHOD'] == "POST"){
             $email    = $_POST['email'];
             $password = $_POST['password'];
-            
+            UserController::login($email, $password);
         }
         break;
     default:
