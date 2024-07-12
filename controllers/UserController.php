@@ -29,4 +29,24 @@ class UserController{
             ]);
         }
     }
+
+    // methode pour connexter un user
+    public static function login($email, $password){
+        $user = UserModel::connexion($email);
+        if(empty($user)){ // l'email n'existe pas
+            echo json_encode([
+                "status"  => 404,
+                "message" => "cet utilisateur n'existe pas"
+            ]);
+        }else{ // l'eamil existe
+            if(password_verify($password, $user['password'])){ // verifier le mot de passe
+                uset($user['password']);
+            }else{
+                echo json_encode([
+                    "status"  => 404,
+                    "message" => "cet utilisateur n'existe pas"
+                ]);
+            }
+        }
+    }
 }

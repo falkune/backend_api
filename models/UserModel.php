@@ -18,4 +18,20 @@ class UserModel{
             return $e;
         }
     }
+
+    public static function connexion($email){
+        // etablir la connxion avec la base de donnee
+        $dbConnection = DbConnexion::dbLog();
+        // preparer la requete pour savoir si l'email existe dans la table users
+        $request = $dbConnection->prepare("SELECT * FROM users WHERE email = :mail");
+        $request->bindParam(':mail', $email);
+        // executer la requete
+        try{
+            $request->execute();
+            $user = $request->fetch(PDO::FETCH_ASSOC);
+            return $user;
+        }catch(PDOException $e){
+            return $e;
+        }
+    }
 }
