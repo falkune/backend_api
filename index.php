@@ -23,6 +23,14 @@ switch($url){
             UserController::login($email, $password);
         }
         break;
+    case "add_task":
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $taskName    = $_POST['nom'];
+            $descriprion = $_POST['description'];
+            $endDate     = $_POST['date'];
+            $userId      = $_POST['id'];
+            
+        }
     default:
         echo json_encode(["message" => "ca marche pas"]);
 }
