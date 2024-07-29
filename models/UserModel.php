@@ -19,6 +19,7 @@ class UserModel{
         }
     }
 
+    // verification des infos d'authentification
     public static function connexion($email){
         // etablir la connxion avec la base de donnee
         $dbConnection = DbConnexion::dbLog();
